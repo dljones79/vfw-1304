@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+
+<!--David Jones-->
+<!--VFW 1304-->
+<!--Project 1-->
+
+<!-- Start of HTML -->
+<html>
+	<!-- Head group with meta data -->
+	<head>
+		<meta charset = "utf-8"/>
+		<meta name = "description" content = "Build a list of your EverQuest 2 Characters!"/>
+		<meta name = "keywords" content = "EverQuest 2, EQ2, EverQuest Characters"/>
+		<meta name = "robots" content = "index, follow"/>
+		<meta name = "viewport" content = "user-scalable=no, width=device-width"/>
+		<title>EverQuest 2 Character Database</title>
+		<link rel="stylesheet" href="css/styles.css" />
+	</head>
+	<body>
+		<header>
+			<h1>Character List</h1>
+		</header>
+		<!-- Form data -->
+		<form action="" method="post">
+			<div>
+				<!-- Character fieldset -->
+				<fieldset>
+					<legend>Character</legend>
+					<ul>
+						<li><label for="cName">Character Name:</label><input type="text" id="cName" /></li>
+						<li><label for="account">Account:</label><input type="text" id="account"/></li>
+						<li>
+							<!-- Option group to select server -->
+							<label for="server">Server</label>
+							<select id="server">
+								<optgroup label="PvE Servers">
+									<option value="Butcherblock">Butcherblock</option>
+									<option value="Crushbone">Crushbone</option>
+									<option value="Everfrost">Everfrost</option>
+									<option value="Guk">Guk</option>
+									<option value="Oasis">Oasis</option>
+									<option value="Permafrost">Permafrost</option>
+									<option value="Unrest">Unrest</option>
+									<option value="Freeport">Freeport</option>
+								</optgroup>
+								<optgroup label="PvP Servers">
+									<option value="Nagafen">Nagafen</option>
+								</optgroup>
+								<optgroup label="Roleplaying Servers">
+									<option value="Antonia Bayle">Antonia Bayle</option>
+									<option value="Lucan D'Lere">Lucan D'Lere</option>
+								</optgroup>
+								<optgroup label="International Servers">
+									<option value="Innovation">Innovation</option>
+									<option value="Valor">Valor</option>
+									<option value="Runnyeye">Runnyeye</option>
+									<option value="Splitpaw">Splitpaw</option>
+									<option value="Sebilis">Sebelis</option>
+									<option value="Storms">Storms</option>
+								</optgroup>
+								<optgroup label="Russian Servers">
+									<option value="Barren Sky">Barren Sky</option>
+									<option value="Harla Dar">Harla Dar</option>
+								</optgroup>
+								<optgroup label="Test Servers">
+									<option label="Test">Test</option>
+									<option label="Test Copy">Test Copy</option>
+								</optgroup>
+							</select>
+						</li>
+						<li><label for="guild">Guild:</label><input type="text" id="guild"/></li>
+						<li><label for="creation">Creation Date:</label><input type="date" id="creation"/></li>
+						<li>
+							<!-- Option group to select class -->
+							<label for="class">Class</label>
+							<select id="class">
+								<optgroup label="Fighter">
+									<option value="Guardian">Guardian</option>
+									<option value="Berserker">Berserker</option>
+									<option value="Bruiser">Bruiser</option>
+									<option value="Monk">Monk</option>
+									<option value="Shadowknight">Shadowknight</option>
+									<option value="Paladin">Paladin</option>
+								</optgroup>
+								<optgroup label="Scout">
+									<option value="Ranger">Ranger</option>
+									<option value="Assassin">Assassin</option>
+									<option value="Swashbuckler">Swashbuckler</option>
+									<option value="Brigand">Brigand</option>
+									<option value="Dirge">Dirge</option>
+									<option value="Troubadour">Troubadour</option>
+									<option value="Beastlord">Beastlord</option>
+								</optgroup>
+								<optgroup label="Mage">
+									<option value="Warlock">Warlock</option>
+									<option value="Wizard">Wizard</option>
+									<option value="Conjuror">Conjuror</option>
+									<option value="Necromancer">Necromancer</option>
+									<option value="Illusionist">Illusionist</option>
+									<option value="Coercer">Coercer</option>
+								</optgroup>
+								<optgroup label="Priest">
+									<option value="Templar">Templar</option>
+									<option value="Inquisitor">Inquisitor</option>
+									<option value="Mystic">Mystic</option>
+									<option value="Defiler">Defiler</option>
+									<option value="Fury">Fury</option>
+									<option value="Warden">Warden</option>
+								</optgroup>
+							</select>
+						</li>
+	
+					</ul>
+				</fieldset>
+			</div>
+			<div>
+				<!-- Character Data fieldset -->
+				<fieldset>
+					<legend>Character Data</legend>
+					<ul>
+						<!-- Radio buttons to choose character sex. -->
+						<li>Sex:
+							<ul>
+								<li><input type="radio" checked value="Male" id="male" name="sex" /><label for="male">Male</label></li>
+								<li><input type="radio" value="Female" id="female" name="sex" /><label for="female">Female</label></li>
+							</ul>
+						</li>
+						<!-- Range inputs for level and alternate advancement points. -->
+						<li><label for="level">Level</label><input type="range" min="1" max="95" name="level" type="level"/></li>
+						<li><label for="aa">AA's</label><input type="range" min="1" max="320" name="aa" type="aa"/></li>
+						<!-- Checkboxes to select milestones completed on character -->
+						<li>Milestone Quests Completed:
+							<ul>
+								<li><input type="checkbox" checked value="Enervated" id="enervated"/><label for="enervated">Enervated</label></li>
+								<li><input type="checkbox" value="Harrows" id="harrows" /><label for="harrows">Harrows Access</label></li>
+								<li><input type="checkbox" value="Skyshrine" id="skyshrine" /><label for="skyshrine">Skyshrine Access</label></li>
+							</ul>
+						</li>
+						<!-- Text area to input character biography. -->
+						<li><label for="bio">Bio:</label><textarea id="bio"></textarea></li>
+					</ul>
+				</fieldset>
+			</div>
+			<div>
+				<!-- Button to submit character data -->
+				<input type="submit" value="Add Character" />
+				<input type="hidden" value="True" />
+			</div>
+		</form>
+		<footer>
+			<nav>
+				<!-- Links to clear data and display data -->
+				<small><a href="#">Clear Stored Data</a>&nbsp &nbsp<a href="#">Display Data</a></small>
+			</nav>
+		</footer>
+	</body>
+</html>

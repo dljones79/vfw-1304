@@ -1,0 +1,111 @@
+/*
+
+title: styles.css
+by: David Jones
+for: VFW 1304 - Project 2
+
+*/
+
+body {
+	background: url('../img/bg.png');
+	padding: 0px;
+	margin: 0px;
+	color: #4c566c;
+	text-shadow: 0px 1px -1px #fff;
+	font: normal 15px Arial;
+	overflow: scroll;
+}
+
+div {
+	margin: 10px;
+	padding: 5px;
+}
+
+input[type=text]{
+	display: block;
+	width: auto;
+}
+
+select{
+	display: block;
+	width: auto;
+}
+
+input[type=date]{
+	display: block;
+	width: auto;
+}
+
+input[type=radio]{
+	margin-right: 20px;
+}
+
+input[type=checkbox]{
+	margin-right: 20px;
+}
+
+input[type=range]{
+	display: block;
+	width: auto;
+}
+
+img{
+	max-width:100%;
+	height:auto;
+}
+
+h1 {
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#b4bfce), color-stop( 50%, #889bb3), color-stop(50%, #7f94b0), to(#6d83a1));
+	margin: 0px;
+	height: 34px;
+	font-size: 22px;
+	text-shadow: 0px -1px 1px #000;
+	border-bottom: 1px solid black;
+	color: white;
+	padding: 8px 0px 0px 0px;
+	text-align: center;
+}
+
+h2{
+	text-align: left;
+	font-size: 19px;
+	margin-left: 12px;
+}
+
+a{
+	text-align: left;
+	margin-left: 12px;
+	padding-bottom: 15px;
+}
+
+p{
+	margin: 1em;
+}
+
+ul{
+	list-style: none;
+	margin: 10px;
+	padding: 0px;
+}
+
+li{
+	background-color: white;
+	border: 1px solid #ababab;
+	margin-bottom: -2px;
+	padding: 12px 10px;
+	text-align: left;
+	color: black;
+	font-weight: bold;
+}
+
+/* Rounding the borders for the list items. */
+li:first-child{
+   -webkit-border-top-left-radius: 12px;
+   -webkit-border-top-right-radius: 12px;
+}
+
+li:last-child {
+   -webkit-border-bottom-left-radius: 12px;
+   -webkit-border-bottom-right-radius: 12px;
+}
+

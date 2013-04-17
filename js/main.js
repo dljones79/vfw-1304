@@ -94,7 +94,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		alert("Character Saved!");	
 	}
 	
-	function loadData(){
+	function displayData(){
 		//Gets data from local storage and writes it.
 		var container = document.createElement('div');
 		container.setAttribute("id", "elements");
@@ -104,7 +104,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		for(var i = 0, j=localStorage.length; i<j; i++){
 			var makeListItem = document.createElement('li');
 			makeUl.appendChild(makeListItem);
-			var theKey = localStorage.key[i];
+			var theKey = localStorage.key(i);
 			var val = localStorage.getItem(theKey);
 			//Converting to an object
 			var newStr = JSON.parse(val);
@@ -113,18 +113,19 @@ window.addEventListener("DOMContentLoaded", function(){
 			for(var x in newStr){
 				var newLi = document.createElement('li');
 				subUl.appendChild(newLi); 
-				var optText = newStr[x][0] + " " + newStr[x][1];
+				var optText = newStr[x][0]+" "+newStr[x][1];
 				newLi.innerHTML = optText;
 			}		
 		}
+		console.log(newStr);
 	}
-	
+		
 	//Calling function to build character class select data.
 	createClassSelect();
 
 	//Event Listeners for Links and Button Clicks
 	var dispData = get('dispData');
-	dispData.addEventListener("click", loadData);
+	dispData.addEventListener("click", displayData);
 //	var clearData = get('clearData');
 //	clearData.addEventListener("click", clearAllData); */
 	var addChar = get('addChar');

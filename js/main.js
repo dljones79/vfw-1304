@@ -75,32 +75,57 @@ window.addEventListener("DOMContentLoaded", function(){
 		// Object properties contain array with form label and input values.
 		selRadio();
 		chkBoxData();
-		var item 			= {};
-			item.cName 		= ["Name:", get('cName').value];
-			item.account 	= ["Account:", get('account').value];
-			item.server 	= ["Server:", get('server').value];
-			item.guild 		= ["Guild:", get('guild').value];
-			item.creation	= ["Creation Date:", get('creation').value];
-			item.charClass	= ["Class:", get('classes').value];
-			item.sex 		= ["Sex:", sexData]; 
-			item.level 		= ["Level:", get('level').value];
-			item.aa 		= ["AA\'s:", get('aa').value];
-			item.enervated  = ["Enervated:", enervated];
-			item.harrows	= ["Harrows:", harrows];
-			item.skyshrine 	= ["Skyshrine:", skyshrine]; 
-			item.bio 		= ["Bio:", get('bio').value];
+		var obj 			= {};
+			obj.cName 		= ["Name:", get('cName').value];
+			obj.account 	= ["Account:", get('account').value];
+			obj.server 	    = ["Server:", get('server').value];
+			obj.guild 		= ["Guild:", get('guild').value];
+			obj.creation	= ["Creation Date:", get('creation').value];
+			obj.charClass	= ["Class:", get('classes').value];
+			obj.sex 		= ["Sex:", sexData]; 
+			obj.level 		= ["Level:", get('level').value];
+			obj.aa 		    = ["AA\'s:", get('aa').value];
+			obj.enervated   = ["Enervated:", enervated];
+			obj.harrows 	= ["Harrows:", harrows];
+			obj.skyshrine 	= ["Skyshrine:", skyshrine]; 
+			obj.bio 		= ["Bio:", get('bio').value];
 		//Using stringify to convert data to string and store into Local Data
-		localStorage.setItem(uniqueId, JSON.stringify(item));
+		localStorage.setItem(uniqueId, JSON.stringify(obj));
 		alert("Character Saved!");	
 	}
 	
+	function controls(arg){
+		switch(arg){
+			case "on":
+				get('characterDataForm').style.display = "none";
+				get('clearData').style.display = "inline";
+				get('dispData').style.display = "none";
+				get('newChar').style.display = "inline";
+				break;				
+			case "off":
+				get('characterForm').style.display = "block";
+				get('clearData').style.display = "inline";
+				get('dispData').style.display = "inline";
+				get('newChar').style.display = "none";
+				get('elements').style.display = "none";
+				break;				
+			default:
+				return false;
+		}
+	}
+	
 	function displayData(){
+		controls("on");
+		if(localStorage.length === 0){
+			alert("No character data on file!");
+		}
 		//Gets data from local storage and writes it.
 		var container = document.createElement('div');
 		container.setAttribute("id", "elements");
 		var makeUl = document.createElement('ul');
 		container.appendChild(makeUl);
 		document.body.appendChild(container);
+		get('elements').style.display = "block";
 		for(var i = 0, j=localStorage.length; i<j; i++){
 			var makeListItem = document.createElement('li');
 			makeUl.appendChild(makeListItem);
@@ -119,6 +144,17 @@ window.addEventListener("DOMContentLoaded", function(){
 		}
 		console.log(newStr);
 	}
+	
+	function clearAllData(){
+		if(localStorage.length === 0){
+			alert("Nothing to clear! Storage empty.");
+		}else {
+			localStorage.clear();
+			alert("Character data was erased!")
+			window.location.reload();
+			return false;
+		}
+	}
 		
 	//Calling function to build character class select data.
 	createClassSelect();
@@ -126,8 +162,8 @@ window.addEventListener("DOMContentLoaded", function(){
 	//Event Listeners for Links and Button Clicks
 	var dispData = get('dispData');
 	dispData.addEventListener("click", displayData);
-//	var clearData = get('clearData');
-//	clearData.addEventListener("click", clearAllData); */
+	var clearData = get('clearData');
+	clearData.addEventListener("click", clearAllData);
 	var addChar = get('addChar');
 	addChar.addEventListener("click", saveData);
 	

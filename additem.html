@@ -70,46 +70,7 @@
 						</li>
 						<li><label for="guild">Guild:</label><input type="text" id="guild"/></li>
 						<li><label for="creation">Creation Date:</label><input type="date" id="creation"/></li>
-						<li>
-							<!-- Option group to select class -->
-							<label for="class">Class</label>
-							<select id="class">
-								<optgroup label="Fighter">
-									<option value="Guardian">Guardian</option>
-									<option value="Berserker">Berserker</option>
-									<option value="Bruiser">Bruiser</option>
-									<option value="Monk">Monk</option>
-									<option value="Shadowknight">Shadowknight</option>
-									<option value="Paladin">Paladin</option>
-								</optgroup>
-								<optgroup label="Scout">
-									<option value="Ranger">Ranger</option>
-									<option value="Assassin">Assassin</option>
-									<option value="Swashbuckler">Swashbuckler</option>
-									<option value="Brigand">Brigand</option>
-									<option value="Dirge">Dirge</option>
-									<option value="Troubadour">Troubadour</option>
-									<option value="Beastlord">Beastlord</option>
-								</optgroup>
-								<optgroup label="Mage">
-									<option value="Warlock">Warlock</option>
-									<option value="Wizard">Wizard</option>
-									<option value="Conjuror">Conjuror</option>
-									<option value="Necromancer">Necromancer</option>
-									<option value="Illusionist">Illusionist</option>
-									<option value="Coercer">Coercer</option>
-								</optgroup>
-								<optgroup label="Priest">
-									<option value="Templar">Templar</option>
-									<option value="Inquisitor">Inquisitor</option>
-									<option value="Mystic">Mystic</option>
-									<option value="Defiler">Defiler</option>
-									<option value="Fury">Fury</option>
-									<option value="Warden">Warden</option>
-								</optgroup>
-							</select>
-						</li>
-	
+						<li id="selClass"><label for="class">Class</label><br /></li>
 					</ul>
 				</fieldset>
 			</div>
@@ -126,8 +87,8 @@
 							</ul>
 						</li>
 						<!-- Range inputs for level and alternate advancement points. -->
-						<li><label for="level">Level</label><input type="range" min="1" max="95" name="level" type="level"/></li>
-						<li><label for="aa">AA's</label><input type="range" min="1" max="320" name="aa" type="aa"/></li>
+						<li><label for="level">Level</label><input type="range" min="1" max="95" name="level" id="level" /></li>
+						<li><label for="aa">AA's</label><input type="range" min="1" max="320" name="aa" id="aa" /></li>
 						<!-- Checkboxes to select milestones completed on character -->
 						<li>Milestone Quests Completed:
 							<ul>
@@ -143,15 +104,16 @@
 			</div>
 			<div>
 				<!-- Button to submit character data -->
-				<input type="submit" value="Add Character" />
+				<input type="submit" value="Add Character" id="addChar"/>
 				<input type="hidden" value="True" />
 			</div>
 		</form>
 		<footer>
 			<nav>
 				<!-- Links to clear data and display data -->
-				<small><a href="#">Clear Stored Data</a>&nbsp &nbsp<a href="#">Display Data</a></small>
+				<small><a href="#" id="clearData">Clear Stored Data</a>&nbsp &nbsp<a href="#" id="dispData">Display Data</a></small>
 			</nav>
 		</footer>
+		<script src="js/main.js" type="text/javascript"></script>
 	</body>
 </html>

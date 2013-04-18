@@ -6,6 +6,7 @@ for: VFW 1304 - Project 2
 
 */
 
+/* Set attributes for body items */
 body {
 	background: url('../img/bg.png');
 	padding: 0px;
@@ -16,44 +17,53 @@ body {
 	overflow: scroll;
 }
 
+/* Set attributes for divs */
 div {
 	margin: 10px;
 	padding: 5px;
 }
 
+/* Set attributes for text inputs */
 input[type=text]{
 	display: block;
 	width: auto;
 }
 
+/* Set attributes for select items. */
 select{
 	display: block;
 	width: auto;
 }
 
+/* Set attributes for date inputs */
 input[type=date]{
 	display: block;
 	width: auto;
 }
 
+/* Set attributes for radio inputs */
 input[type=radio]{
 	margin-right: 20px;
 }
 
+/* Set attributes for checkboxes */
 input[type=checkbox]{
 	margin-right: 20px;
 }
 
+/* Set attributes for range inputs */
 input[type=range]{
 	display: block;
 	width: auto;
 }
 
+/* Set size for images. */
 img{
 	max-width:100%;
 	height:auto;
 }
 
+/* Heading 1 Attributes */
 h1 {
 	background-image: -webkit-gradient(linear, left top, left bottom, from(#b4bfce), color-stop( 50%, #889bb3), color-stop(50%, #7f94b0), to(#6d83a1));
 	margin: 0px;
@@ -66,28 +76,33 @@ h1 {
 	text-align: center;
 }
 
+/* Heading 2 Attributes */
 h2{
 	text-align: left;
 	font-size: 19px;
 	margin-left: 12px;
 }
 
+/* Anchor attributes */
 a{
 	text-align: left;
 	margin-left: 12px;
 	padding-bottom: 15px;
 }
 
+/* Paragraph attributes */
 p{
 	margin: 1em;
 }
 
+/* Unordered list attributes */
 ul{
 	list-style: none;
 	margin: 10px;
 	padding: 0px;
 }
 
+/* List item attributes */
 li{
 	background-color: white;
 	border: 1px solid #ababab;
@@ -109,6 +124,7 @@ li:last-child {
    -webkit-border-bottom-right-radius: 12px;
 }
 
+/* Button Attributes */
 input[type=button]{
 	-webkit-box-shadow: 0px -1px 1px #2f3740, 0px 1px 1px #bfcbdb;
 	background-image: -webkit-gradient(linear, left top, left bottom, from(#8aa1bf), color-stop( 50%, #5877a2), color-stop(50%, #476999), to(#4a6c9b));

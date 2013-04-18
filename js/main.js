@@ -95,6 +95,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		window.location.reload();	
 	}
 	
+	//Switch/Case to toggle visibility of form and buttons.
 	function controls(arg){
 		switch(arg){
 			case "on":
@@ -115,6 +116,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		}
 	}
 	
+	//Function to display saved character data on screen.
 	function displayData(){
 		controls("on");
 		if(localStorage.length === 0){
@@ -145,6 +147,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		}
 	}
 	
+	//Function to clear all data in local storage.
 	function clearAllData(){
 		if(localStorage.length === 0){
 			alert("Nothing to clear! Storage empty.");

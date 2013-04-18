@@ -22,7 +22,7 @@
 		</header>
 		<div>
 			<nav>
-				<!-- Links to clear data and display data -->
+				<!-- Buttons to clear data, display data, and add new data. -->
 				<input type="button" value="Clear Stored Data" id="clearData"/>
 				<input type="button" value="Display Characters" id="dispData"/>
 				<input type="button" value="New Character" id="newChar" onclick="window.location.href='additem.html'" style="display:none;" />
@@ -95,6 +95,7 @@
 							</ul>
 						</li>
 						<!-- Range inputs for level and alternate advancement points. -->
+						<!-- Output used for visual feedback for range values. -->
 						<li><label for="level">Level: </label><input type="range" min="1" max="95" name="level" id="level" oninput="lvl.value = level.valueAsNumber"/>
 							<output for="level" name="lvl">0</output>/95</li>
 						<li><label for="aa">AA's: </label><input type="range" min="1" max="320" name="aa" id="aa" oninput="alternate.value = aa.valueAsNumber"/>

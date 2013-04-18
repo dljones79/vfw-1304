@@ -91,7 +91,8 @@ window.addEventListener("DOMContentLoaded", function(){
 			obj.bio 		= ["Bio:", get('bio').value];
 		//Using stringify to convert data to string and store into Local Data
 		localStorage.setItem(uniqueId, JSON.stringify(obj));
-		alert("Character Saved!");	
+		alert("Character Saved!");
+		window.location.reload();	
 	}
 	
 	function controls(arg){
@@ -154,12 +155,7 @@ window.addEventListener("DOMContentLoaded", function(){
 			return false;
 		}
 	}
-	
-//	function updateRangeValues(){
-//		vals = get('level').value;
-		
-//	}
-		
+
 	//Calling function to build character class select data.
 	createClassSelect();
 

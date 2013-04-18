@@ -142,7 +142,6 @@ window.addEventListener("DOMContentLoaded", function(){
 				newLi.innerHTML = optText;
 			}		
 		}
-		console.log(newStr);
 	}
 	
 	function clearAllData(){
@@ -155,6 +154,11 @@ window.addEventListener("DOMContentLoaded", function(){
 			return false;
 		}
 	}
+	
+//	function updateRangeValues(){
+//		vals = get('level').value;
+		
+//	}
 		
 	//Calling function to build character class select data.
 	createClassSelect();
@@ -163,7 +167,7 @@ window.addEventListener("DOMContentLoaded", function(){
 	var dispData = get('dispData');
 	dispData.addEventListener("click", displayData);
 	var clearData = get('clearData');
-	clearData.addEventListener("click", clearAllData);
+	clearData.addEventListener("click", clearAllData); 
 	var addChar = get('addChar');
 	addChar.addEventListener("click", saveData);
 	

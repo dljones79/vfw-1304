@@ -23,9 +23,9 @@
 		<div>
 			<nav>
 				<!-- Links to clear data and display data -->
-			    <small><a href="#" id="clearData">Clear Stored Data</a>&nbsp &nbsp
-				<a href="#" id="dispData">Display Data</a>&nbsp &nbsp
-				<a href="additem.html" id="newChar" style="display:none;">New Character</a></small>
+				<input type="button" value="Clear Stored Data" id="clearData"/>
+				<input type="button" value="Display Characters" id="dispData"/>
+				<input type="button" value="New Character" id="newChar" onclick="window.location.href='additem.html'" style="display:none;" />
 			</nav>
 		</div>
 		<!-- Form data -->
@@ -95,8 +95,10 @@
 							</ul>
 						</li>
 						<!-- Range inputs for level and alternate advancement points. -->
-						<li><label for="level">Level</label><input type="range" min="1" max="95" name="level" id="level" /></li>
-						<li><label for="aa">AA's</label><input type="range" min="1" max="320" name="aa" id="aa" /></li>
+						<li><label for="level">Level: </label><input type="range" min="1" max="95" name="level" id="level" oninput="lvl.value = level.valueAsNumber"/>
+							<output for="level" name="lvl">0</output>/95</li>
+						<li><label for="aa">AA's: </label><input type="range" min="1" max="320" name="aa" id="aa" oninput="alternate.value = aa.valueAsNumber"/>
+							<output for="aa" name="alternate">0</output>/320</li>
 						<!-- Checkboxes to select milestones completed on character -->
 						<li>Milestone Quests Completed:
 							<ul>
@@ -112,7 +114,7 @@
 			</div>
 			<div>
 				<!-- Button to submit character data -->
-				<input type="submit" value="Add Character" id="addChar"/>
+				<input type="button" value="Add Character" id="addChar"/>
 				<input type="hidden" value="True" />
 			</div>
 		</form>

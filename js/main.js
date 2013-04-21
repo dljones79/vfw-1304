@@ -1,6 +1,6 @@
 // David Jones
 // VFW 1304
-// Project 2
+// Project 3
 
 //Don't initialize until the DOM is done loading.
 window.addEventListener("DOMContentLoaded", function(){
@@ -131,6 +131,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		get('elements').style.display = "block";
 		for(var i = 0, j=localStorage.length; i<j; i++){
 			var makeListItem = document.createElement('li');
+			var makeEditLi = document.createElement('li');
 			makeUl.appendChild(makeListItem);
 			var theKey = localStorage.key(i);
 			var val = localStorage.getItem(theKey);
@@ -143,8 +144,34 @@ window.addEventListener("DOMContentLoaded", function(){
 				subUl.appendChild(newLi); 
 				var optText = newStr[x][0]+" "+newStr[x][1];
 				newLi.innerHTML = optText;
-			}		
+				subUl.appendChild(makeEditLi);
+			}
+			createEditLinks(localStorage.key(i), makeEditLi); //Function call to create edit and delete links.		
 		}
+	}
+	
+	//Creates edit and delete links for stored data.
+	function createEditLinks(objKey, makeEditLi){
+		//Edit Link
+		var editChar = document.createElement('a');
+		editChar.href = "a";
+		editChar.key = objKey;
+		var text = "Edit Character";
+		//editChar.addEventListener("click", editCharacter);
+		editChar.innerHTML = text;
+		makeEditLi.appendChild(editChar);
+		
+		var pageBreak = document.createElement('br');
+		makeEditLi.appendChild(pageBreak);
+		
+		//Delete Link
+		var delChar = document.createElement('a');
+		delChar.href = "a";
+		delChar.key = objKey;
+		var delText = "Delete Character";
+		//delChar.addEventListener("click", deleteCharacter);
+		delChar.innerHTML = delText;
+		makeEditLi.appendChild(delChar);
 	}
 	
 	//Function to clear all data in local storage.

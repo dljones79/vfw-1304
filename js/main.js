@@ -105,7 +105,7 @@ window.addEventListener("DOMContentLoaded", function(){
 				get('newChar').style.display = "inline";
 				break;				
 			case "off":
-				get('characterForm').style.display = "block";
+				get('characterDataForm').style.display = "block";
 				get('clearData').style.display = "inline";
 				get('dispData').style.display = "inline";
 				get('newChar').style.display = "none";
@@ -154,10 +154,10 @@ window.addEventListener("DOMContentLoaded", function(){
 	function createEditLinks(objKey, makeEditLi){
 		//Edit Link
 		var editChar = document.createElement('a');
-		editChar.href = "a";
+		editChar.href = "#";
 		editChar.key = objKey;
 		var text = "Edit Character";
-		//editChar.addEventListener("click", editCharacter);
+		editChar.addEventListener("click", editCharacter);
 		editChar.innerHTML = text;
 		makeEditLi.appendChild(editChar);
 		
@@ -166,12 +166,59 @@ window.addEventListener("DOMContentLoaded", function(){
 		
 		//Delete Link
 		var delChar = document.createElement('a');
-		delChar.href = "a";
+		delChar.href = "#";
 		delChar.key = objKey;
 		var delText = "Delete Character";
 		//delChar.addEventListener("click", deleteCharacter);
 		delChar.innerHTML = delText;
 		makeEditLi.appendChild(delChar);
+	}
+	
+	function editCharacter(){
+		// Retrieve data from local storage.
+		var keyVal = localStorage.getItem(this.key);
+		var charObj = JSON.parse(keyVal);
+		
+		//Show the form
+		controls("off");
+		
+		//Send data to form fields.
+		get('cName').value = charObj.cName[1];
+		get('account').value = charObj.account[1];
+		get('server').value = charObj.server[1];
+		get('guild').value = charObj.guild[1];
+		get('creation').value = charObj.creation[1];
+		get('classes').value = charObj.charClass[1];
+		var sexRadios = document.forms[0].sex;
+		for(var i=0; i<sexRadios.length; i++){
+			if(sexRadios[i].value == "Male"){
+				sexRadios[i].setAttribute("checked", "checked");
+			}else if(sexRadios[i].value == "Female"){
+				sexRadios[i].setAttribute("checked", "checked");
+			}
+		}
+		get('level').value = charObj.level[1];
+		get('aa').value = charObj.aa[1];
+		if(charObj.enervated[i] == "Yes"){
+			get('enervated').setAttribute("checked", "checked");
+		}
+		if(charObj.harrows[i] == "Yes"){
+			get('harrows').setAttribute("checked", "checked");
+		}
+		if(charObj.skyshrine[i] == "Yes"){
+			get('skyshrine').setAttribute("checked", "checked");
+		}
+		get('bio').value = charObj.bio[1];
+		
+		//Remove listener from Add Character button
+		addChar.removeEventListener("click", saveData);
+		//Change value of button to edit
+		get('addChar').value = "Edit Character";
+		var editButton = get('addChar');
+		//Save the key value established in this function as a property of the editButton event
+		//so we can use that value when we save the data we edited.
+		editButton.addEventListener("click", validateFields);
+		editButton.key = this.key;
 	}
 	
 	//Function to clear all data in local storage.
@@ -184,6 +231,10 @@ window.addEventListener("DOMContentLoaded", function(){
 			window.location.reload();
 			return false;
 		}
+	}
+	
+	function validateFields(){
+		
 	}
 
 	//Calling function to build character class select data.

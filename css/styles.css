@@ -113,6 +113,11 @@ li{
 	font-weight: bold;
 }
 
+/* Sets font color for error messages to red */
+#errorLi{
+	color: red;
+}
+
 /* Rounding the borders for the list items. */
 li:first-child{
    -webkit-border-top-left-radius: 12px;

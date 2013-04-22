@@ -34,6 +34,8 @@
 				<!-- Character fieldset -->
 				<fieldset>
 					<legend>Character</legend>
+					<span>* Fields are required</span>
+					<ul id="formErrors"></ul>
 					<ul>
 						<li><label for="cName">Character Name:</label><input type="text" id="cName" /></li>
 						<li><label for="account">Account:</label><input type="text" id="account"/></li>
@@ -97,9 +99,9 @@
 						<!-- Range inputs for level and alternate advancement points. -->
 						<!-- Output used for visual feedback for range values. -->
 						<li><label for="level">Level: </label><input type="range" min="1" max="95" name="level" id="level" oninput="lvl.value = level.valueAsNumber"/>
-							<output for="level" name="lvl">0</output>/95</li>
+							<output for="level" name="lvl" id="lvl">0</output>/95</li>
 						<li><label for="aa">AA's: </label><input type="range" min="1" max="320" name="aa" id="aa" oninput="alternate.value = aa.valueAsNumber"/>
-							<output for="aa" name="alternate">0</output>/320</li>
+							<output for="aa" name="alternate" id="alternate">0</output>/320</li>
 						<!-- Checkboxes to select milestones completed on character -->
 						<li>Milestone Quests Completed:
 							<ul>

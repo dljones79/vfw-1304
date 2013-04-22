@@ -12,7 +12,8 @@ window.addEventListener("DOMContentLoaded", function(){
 		sexData,
 		enervated,
 		harrows,
-		skyshrine
+		skyshrine,
+		errorMessages = get('formErrors');
 	; //End of Variable Defaults
 
 	//getElementById Function
@@ -68,9 +69,17 @@ window.addEventListener("DOMContentLoaded", function(){
 		}
 	} 
 	
-	function saveData(){
-		// Create random number for each character.
-		var uniqueId        = Math.floor(Math.random()*100000001);
+	function saveData(aKey){
+		//If statement to determine if we are using a previous key or need to make a new one.
+		if(!aKey){
+			// Create random number for each character.
+			var uniqueId        = Math.floor(Math.random()*100000001);
+		}else{
+			//Set the uniqueId to the existing key we are editing
+			//This key has been passed from the editButton event handler
+			//to the validateFields function, and then passed into this function.
+			var uniqueId = aKey;
+		}
 		// Get data from form and store in an object.
 		// Object properties contain array with form label and input values.
 		selRadio();
@@ -169,7 +178,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		delChar.href = "#";
 		delChar.key = objKey;
 		var delText = "Delete Character";
-		//delChar.addEventListener("click", deleteCharacter);
+		delChar.addEventListener("click", deleteCharacter);
 		delChar.innerHTML = delText;
 		makeEditLi.appendChild(delChar);
 	}
@@ -198,7 +207,9 @@ window.addEventListener("DOMContentLoaded", function(){
 			}
 		}
 		get('level').value = charObj.level[1];
+		get('lvl').innerHTML = charObj.level[1]; // Sets output for level range to stored value.
 		get('aa').value = charObj.aa[1];
+		get('alternate').innerHTML = charObj.aa[1]; // Sets output for aa range to stored value.
 		if(charObj.enervated[i] == "Yes"){
 			get('enervated').setAttribute("checked", "checked");
 		}
@@ -221,6 +232,16 @@ window.addEventListener("DOMContentLoaded", function(){
 		editButton.key = this.key;
 	}
 	
+	function deleteCharacter(){
+		var verify = confirm("Are you sure you want to delete this character?");
+		if(verify){
+			localStorage.removeItem(this.key);
+			alert("Character was deleted.");
+			window.location.reload();
+		}else{
+			alert("Character not deleted.");
+		}
+	}
 	//Function to clear all data in local storage.
 	function clearAllData(){
 		if(localStorage.length === 0){
@@ -233,8 +254,57 @@ window.addEventListener("DOMContentLoaded", function(){
 		}
 	}
 	
-	function validateFields(){
+	function validateFields(eventData){
+		//Defining elements needed to check
+		var getName = get('cName');
+		var getAccount = get('account');
+		var getClass = get('classes');
 		
+		//Reset messages
+		errorMessages.innerHTML = "";
+			getName.style.border = "1px solid black";
+			getAccount.style.border = "1px solid black";
+			getClass.style.border = "1px solid black";
+			
+		//Check elements and get error messages.
+		var messages = [];
+		
+		//Validations
+		if(getName.value === ""){
+			var cNameError = "Please enter a character name.";
+			getName.style.border = "1px solid red";
+			messages.push(cNameError);
+		}
+		
+		if(getAccount.value === ""){
+			var accountError = "Please enter an account.";
+			getAccount.style.border = "1px solid red";
+			messages.push(accountError);
+		}
+		
+		if(getClass.value === "--Choose A Class--"){
+			var classError = "Please choose a class.";
+			getClass.style.border = "1px solid red";
+			messages.push(classError);
+		}
+		
+		//If errors present, we will display them on the screen
+		if(messages.length >= 1){
+			for(var i = 0, j=messages.length; i < j; i++){
+				var errText = document.createElement('li');
+				errText.setAttribute("id", "errorLi");
+				errText.innerHTML = messages[i];
+				errorMessages.appendChild(errText);
+			}
+			eventData.preventDefault();
+			return false;
+		}else{
+			//Save data if no errors are present. 
+			//Sending key value (Key value comes from the editCharacter function).
+			//This key value was passed throught the editButton event listener as a property.
+			saveData(this.key);
+		}
+
 	}
 
 	//Calling function to build character class select data.
@@ -246,7 +316,7 @@ window.addEventListener("DOMContentLoaded", function(){
 	var clearData = get('clearData');
 	clearData.addEventListener("click", clearAllData); 
 	var addChar = get('addChar');
-	addChar.addEventListener("click", saveData);
+	addChar.addEventListener("click", validateFields);
 	
 });
 

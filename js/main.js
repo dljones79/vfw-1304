@@ -1,6 +1,6 @@
 // David Jones
 // VFW 1304
-// Project 3
+// Project 4
 
 //Don't initialize until the DOM is done loading.
 window.addEventListener("DOMContentLoaded", function(){
@@ -8,7 +8,7 @@ window.addEventListener("DOMContentLoaded", function(){
 	//Variable Defaults
 	var charClasses = ["--Choose A Class--", "Berserker", "Guardian", "Paladin", "Shadowknight", "Monk", "Bruiser", 
 		"Ranger", "Assassin", "Swashbuckler", "Beastlord", "Brigand", "Troubadour", "Dirge", "Mystic", "Defiler", "Templar",
-		"Inquisitor", "Fury", "Warden"],
+		"Inquisitor", "Fury", "Warden", "Wizard", "Warlock", "Necromancer", "Conjuror", "Coercer", "Illusionist"],
 		sexData,
 		enervated,
 		harrows,
@@ -129,7 +129,8 @@ window.addEventListener("DOMContentLoaded", function(){
 	function displayData(){
 		controls("on");
 		if(localStorage.length === 0){
-			alert("No character data on file!");
+			alert("No character data on file!  Default data added.");
+			loadDefaultData();
 		}
 		//Gets data from local storage and writes it.
 		var container = document.createElement('div');
@@ -148,6 +149,7 @@ window.addEventListener("DOMContentLoaded", function(){
 			var newStr = JSON.parse(val);
 			var subUl = document.createElement('ul');
 			makeListItem.appendChild(subUl);
+			selectImage(newStr.charClass[1], subUl);
 			for(var x in newStr){
 				var newLi = document.createElement('li');
 				subUl.appendChild(newLi); 
@@ -159,6 +161,26 @@ window.addEventListener("DOMContentLoaded", function(){
 		}
 	}
 	
+	//Sets the image for the correct class for each character.
+	function selectImage(className, subUl){
+		var imgLi = document.createElement('li');
+		subUl.appendChild(imgLi);
+		var imageTag = document.createElement('img');
+		imageTag.setAttribute("id", "classImg");
+		var source = imageTag.setAttribute("src", "img/class_images/"+ className + ".png");
+		imgLi.appendChild(imageTag);
+	}
+	
+	//Test data for form.  Auto Filled.
+	function loadDefaultData(){
+		//JSON.js file contains data used here.
+		//Store data into local storage.
+		for(var x in jsonObj){
+			var ranId = Math.floor(Math.random()*100000001);
+			localStorage.setItem(ranId, JSON.stringify(jsonObj[x]));
+		}
+		
+	}
 	//Creates edit and delete links for stored data.
 	function createEditLinks(objKey, makeEditLi){
 		//Edit Link
